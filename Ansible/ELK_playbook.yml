@@ -1,0 +1,50 @@
+---
+
+- name: config_vm_with_docker
+  hosts: ELK_servers
+  become: true
+  tasks:
+  - name: docker.io
+    apt:
+      force_apt_get: yes
+      update_cache: yes
+      name: docker.io
+      state: present
+
+  - name: bump_vm
+    command: sysctl -w vm.max_map_count=262144
+
+  - name: use_vm
+    sysctl:
+      name: vm.max_map_count
+      value: "262144"
+      state: present
+      reload: yes
+
+  - name: instal_pip3
+    apt: 
+      force_apt_get: yes
+      name: python3-pip
+      state: present
+
+  - name: install_docker_python_module
+    pip:
+      name: docker
+      state: present
+
+  - name: download_and_launch_a_docker_elk_container
+    docker_container:
+     name: elkserver
+     image: sebp/elk:761
+     state: started
+     restart_policy: always
+     published_ports:
+       - 5601:5601
+       - 9200:9200
+       - 5044:5044
+
+  - name: enable_docker_service
+    systemd:
+       name: docker
+       enabled: yes
+
