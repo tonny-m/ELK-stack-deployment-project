@@ -41,11 +41,9 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 | Elk-Stack-Server | Log management platform | 10.2.0.4   | Linux            |
 
 ### Access Policies
-
-The machines on the internal network are not exposed to the public Internet. 
-
-Only the Jump-Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-"admin_public_IP" # "admin_public_IP" has to be set by the system administrator.
+ 
+The Jump-Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+"admin_public_IP" ## "admin_public_IP" has to be set by the system administrator.
 
 All machines within the network can only be accessed by Jump-Box (10.0.0.4)
 
