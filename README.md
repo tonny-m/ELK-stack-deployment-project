@@ -32,31 +32,33 @@ Metricbeat records metrics and statistics.
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Jump-Box | Gateway  | 10.0.0.4   | Linux            |
-| TODO     |          | 10.0.0.5   | Linux            |
-| TODO     |          | 10.0.0.6   | Linux            |
-| TODO     |          | 10.0.0.7   | Linux            |
-| TODO     |          |            | Linux            |
+| Name             | Function                | IP Address | Operating System |
+|------------------|-------------------------|------------|------------------|
+| Jump-Box         | Gateway                 | 10.0.0.4   | Linux            |
+| Web-1            | Web server              | 10.0.0.5   | Linux            |
+| Web-2            | Web server              | 10.0.0.6   | Linux            |
+| Web-3            | Web server              | 10.0.0.7   | Linux            |
+| Elk-Stack-Server | Log management platform | 10.2.0.4   | Linux            |
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the Jump-Box machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+"admin_public_IP" # "admin_public_IP" has to be set by the system administrator.
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+All machines within the network can only be accessed by Jump-Box (10.0.0.4)
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Name             | Publicly Accessible | Allowed IP Addresses        |
+|------------------|---------------------|-----------------------------|
+| Jump-Box         | Yes                 | "admin_public_IP"           |
+| Web-1            | No                  | 10.0.0.4                    |
+| Web-1            | No                  | 10.0.0.4                    |
+| Web-3            | No                  | 10.0.0.4                    |
+| Elk-Stack-Server | Yes                 | 10.0.0.4; "admin_public_IP" |
+| Load Balancer    | Yes                 | "admin_public_IP"           |
 
 ### Elk Configuration
 
